@@ -4,97 +4,124 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sowmya Sri Rathnakumar — BA & Technical Support</title>
+
+  <!-- Chart.js CDN (small, stable) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
   <style>
     :root{
       --accent:#0b5fff;
       --muted:#4b5563;
       --bg:#ffffff;
       --card:#ffffff;
+      --maxw:820px;
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-      color-scheme: light;
       color:#0f1724;
     }
+
     html,body{height:100%;margin:0;padding:0;background:var(--bg);-webkit-font-smoothing:antialiased;}
-    body{padding:16px;display:flex;justify-content:center;}
-    .wrap{width:100%;max-width:780px;}
-    .card{background:#fff;border-radius:12px;padding:14px;margin-bottom:12px;border:1px solid #eee;box-shadow:0 6px 18px rgba(15,23,42,0.03)}
+    body{padding:14px;display:flex;justify-content:center;}
+    .wrap{width:100%;max-width:var(--maxw);}
+
+    .card{background:#fff;border-radius:12px;padding:14px;margin-bottom:12px;border:1px solid #eee;box-shadow:0 8px 28px rgba(15,23,42,0.03)}
     header{display:flex;gap:12px;align-items:center}
     .photo{width:84px;height:84px;border-radius:10px;background:#eef5ff;display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:700;font-size:28px;flex:0 0 84px;}
     .hero h1{margin:0;font-size:18px}
     .hero .sub{color:var(--muted);font-size:13px;margin-top:6px}
     .meta{color:var(--muted);font-size:13px;margin-top:8px}
     a.button{display:inline-block;padding:10px 14px;background:var(--accent);color:#fff;border-radius:10px;text-decoration:none;margin-top:8px;font-weight:700}
+
     .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#eef4ff;color:var(--accent);font-weight:700;margin-bottom:8px;font-size:13px}
     ul.clean{padding-left:18px;color:#253042}
     .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
     .skill{background:#f4f8ff;padding:6px 8px;border-radius:8px;font-weight:600;font-size:13px;color:#0b2b3a;border:1px solid #e6eefc}
-    .gallery img{width:100%;height:auto;border-radius:8px;border:1px solid #eee;margin-top:8px}
-    footer{font-size:13px;color:var(--muted);text-align:center;margin-top:8px}
-    @media (max-width:420px){body{padding:10px}.photo{width:72px;height:72px;font-size:24px}}
+
+    .metrics-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .metric{background:#eef6ff;padding:8px 10px;border-radius:10px;font-weight:700;color:var(--accent);font-size:13px;border:1px solid #d6e2ff}
+
+    .chart-box{margin-top:12px;background:#fbfdff;border-radius:8px;padding:10px;border:1px solid #eef2ff}
+    canvas{width:100% !important;height:180px !important;max-height:220px}
+
+    .gallery img{width:100%;height:auto;border-radius:8px;border:1px solid #eee;margin-top:8px;display:block}
+
+    footer{font-size:13px;color:var(--muted);text-align:center;margin-top:6px;padding-bottom:6px}
+
+    @media (max-width:480px){
+      body{padding:10px}
+      .photo{width:72px;height:72px;font-size:24px}
+      canvas{height:160px !important}
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
+
+    <!-- Header -->
     <div class="card" role="banner">
       <header>
         <div class="photo" aria-hidden="true">SR</div>
         <div class="hero">
           <h1>Sowmya Sri Rathnakumar</h1>
           <div class="sub">Business Analyst • Technical Support • AI analytics (in progress)</div>
-          <div class="meta">Coimbatore, India • 📧 <a href="mailto:sowmyasrirathnakumar@gmail.com">sowmyasrirathnakumar@gmail.com</a> • 📱 +91 97515 54451</div>
+          <div class="meta">Coimbatore, India • <a href="mailto:sowmyasrirathnakumar@gmail.com">sowmyasrirathnakumar@gmail.com</a> • +91 97515 54451</div>
           <a class="button" href="./Sowmya_Rathna_Resume.pdf" download>Download Résumé</a>
         </div>
       </header>
     </div>
 
-    <section class="card">
+    <!-- Profile -->
+    <section class="card" aria-label="profile">
       <span class="pill">Profile</span>
       <h2 style="margin:8px 0 6px 0;">Short profile</h2>
-      <p style="margin:0 0 8px 0;color:#2b3a45;line-height:1.45">
-        Results-driven Business Analyst & Technical Support professional who turns customer issues into clear product requirements, audit-ready documentation, and process improvements. Currently upskilling in AI-assisted analytics and automation.
+      <p style="margin:0;color:#253042;line-height:1.45;">
+        Results-driven Business Analyst & Technical Support specialist who converts customer issues into structured product requirements, audit-ready documentation and measurable process improvements. Currently upskilling in AI-assisted analytics and automation.
       </p>
 
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
-        <div style="background:#eef6ff;padding:8px 10px;border-radius:10px;font-weight:700;color:var(--accent)">200+ tickets/day</div>
-        <div style="background:#eef6ff;padding:8px 10px;border-radius:10px;font-weight:700;color:var(--accent)">~90% resolved internally</div>
-        <div style="background:#eef6ff;padding:8px 10px;border-radius:10px;font-weight:700;color:var(--accent)">CMMI / ISO docs</div>
+      <div class="metrics-row" aria-hidden="true">
+        <div class="metric">200+ tickets/day</div>
+        <div class="metric">~90% resolved internally</div>
+        <div class="metric">CMMI / ISO docs</div>
       </div>
     </section>
 
+    <!-- Strengths -->
     <section class="card">
       <h3 style="margin:0 0 8px 0;">Core strengths</h3>
       <ul class="clean">
-        <li>Requirement gathering & BRDs — convert support tickets into prioritized features</li>
-        <li>Support → Product handoff: demos, onboarding, API testing (Postman)</li>
-        <li>Documentation & audits (CMMI / ISO)</li>
-        <li>AI-assisted analytics (Power BI, SQL, Excel) & automation basics (RPA)</li>
+        <li><strong>Requirement gathering & BRDs</strong> — convert support tickets into prioritized features</li>
+        <li><strong>Support → Product handoff</strong> — demos, onboarding, API testing (Postman)</li>
+        <li><strong>Documentation & audits</strong> — CMMI / ISO artifacts</li>
+        <li><strong>AI-assisted analytics</strong> — Power BI, Gen-AI SQL, Excel AI; automation basics (RPA)</li>
       </ul>
     </section>
 
+    <!-- Experience -->
     <section class="card">
       <h3 style="margin:0 0 8px 0;">Experience (selected)</h3>
-      <div style="margin-bottom:8px">
-        <strong>Digitide Solutions</strong> — Technical Support Executive & Business Analyst<br />
+
+      <div style="margin-bottom:10px">
+        <strong>Digitide Solutions</strong> — Technical Support Exec & Business Analyst<br/>
         <small style="color:var(--muted)">2022 – Present</small>
-        <div style="margin-top:6px;color:#2b3a45">Managed heavy support volume; enabled backend access to resolve ~90% of tickets internally; authored BRDs, user guides and CMMI/ISO artifacts.</div>
+        <div style="margin-top:6px;color:#253042">Managed heavy support volume; enabled backend access to resolve ≈90% of tickets internally; authored BRDs, user guides and compliance artifacts.</div>
       </div>
 
-      <div style="margin-bottom:8px">
-        <strong>Klaus IT (Citrix R&D)</strong> — Technical Support Executive<br />
+      <div style="margin-bottom:10px">
+        <strong>Klaus IT (Citrix R&D)</strong> — Technical Support Executive<br/>
         <small style="color:var(--muted)">2021 – 2022</small>
-        <div style="margin-top:6px;color:#2b3a45">Enterprise Citrix Cloud support, licensing and escalation management.</div>
+        <div style="margin-top:6px;color:#253042">Enterprise Citrix Cloud support, licensing and escalation management.</div>
       </div>
 
-      <div style="margin-bottom:8px">
-        <strong>Amazon Development Center</strong> — Customer Service Associate<br />
+      <div style="margin-bottom:0">
+        <strong>Amazon Development Center</strong> — Customer Service Associate<br/>
         <small style="color:var(--muted)">2020 – 2021</small>
-        <div style="margin-top:6px;color:#2b3a45">Multi-channel support, 80% FCR, trend analysis for product teams.</div>
+        <div style="margin-top:6px;color:#253042">Multi-channel support; 80% FCR; trend analysis for product teams.</div>
       </div>
     </section>
 
+    <!-- Skills -->
     <section class="card">
       <h3 style="margin:0 0 8px 0;">Skills & learning</h3>
-      <div class="skills">
+      <div class="skills" aria-hidden="true">
         <span class="skill">Requirement Gathering</span>
         <span class="skill">BRDs</span>
         <span class="skill">Power BI (AI)</span>
@@ -106,24 +133,85 @@
 
       <h4 style="margin-top:12px;margin-bottom:6px;">Current course (Simplilearn)</h4>
       <ul class="clean" style="margin-top:0">
-        <li>CBAP, Gen-AI SQL, Power BI with AI, Prompt Engineering, RPA basics, Agile & product-first thinking</li>
+        <li>CBAP, Gen-AI SQL, Power BI with AI, Prompt Engineering, RPA basics, Agile & Product-first thinking</li>
       </ul>
     </section>
 
+    <!-- Key metrics + chart -->
     <section class="card">
-      <h3 style="margin:0 0 8px 0;">Manager feedback</h3>
-      <div class="gallery">
-        <!-- If you placed images in /images/, these will show. If none exist, they'll be ignored -->
-        <img src="images/comment1.jpg" alt="manager feedback" onerror="this.style.display='none'">
-        <img src="images/comment2.jpg" alt="manager feedback" onerror="this.style.display='none'">
-        <img src="images/comment3.jpg" alt="manager feedback" onerror="this.style.display='none'">
+      <h3 style="margin:0 0 8px 0;">Key metrics</h3>
+
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px;">
+        <div style="flex:1;min-width:120px">
+          <div style="font-weight:700;color:var(--accent);font-size:16px">200+</div>
+          <div style="color:var(--muted);font-size:13px">Tickets/day (peak)</div>
+        </div>
+        <div style="flex:1;min-width:120px">
+          <div style="font-weight:700;color:var(--accent);font-size:16px">~90%</div>
+          <div style="color:var(--muted);font-size:13px">Resolved internally</div>
+        </div>
+        <div style="flex:1;min-width:120px">
+          <div style="font-weight:700;color:var(--accent);font-size:16px">80%</div>
+          <div style="color:var(--muted);font-size:13px">FCR (example)</div>
+        </div>
+      </div>
+
+      <div class="chart-box">
+        <canvas id="compactChart" aria-label="impact chart"></canvas>
       </div>
     </section>
 
-    <footer class="card" style="text-align:center;">
-      <div style="color:var(--muted)">Email: <a href="mailto:sowmyasrirathnakumar@gmail.com">sowmyasrirathnakumar@gmail.com</a> • Phone: +91 97515 54451</div>
-      <div style="margin-top:8px;color:var(--muted)">© Sowmya Sri Rathnakumar</div>
+    <!-- Manager feedback -->
+    <section class="card">
+      <h3 style="margin:0 0 8px 0;">Manager feedback</h3>
+      <div class="gallery" id="gallery">
+        <img src="images/comment1.jpg" alt="feedback 1" onerror="this.style.display='none'">
+        <img src="images/comment2.jpg" alt="feedback 2" onerror="this.style.display='none'">
+        <img src="images/comment3.jpg" alt="feedback 3" onerror="this.style.display='none'">
+      </div>
+    </section>
+
+    <footer class="card">
+      <div style="color:var(--muted);text-align:center">Email: <a href="mailto:sowmyasrirathnakumar@gmail.com">sowmyasrirathnakumar@gmail.com</a> • Phone: +91 97515 54451</div>
+      <div style="text-align:center;margin-top:8px;color:var(--muted)">© Sowmya Sri Rathnakumar</div>
     </footer>
+
   </div>
+
+  <script>
+    try {
+      const ctx = document.getElementById('compactChart');
+      if (ctx && typeof Chart !== 'undefined') {
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['Tickets/day','Resolved %','FCR','Docs'],
+            datasets: [{
+              data: [200,90,80,95],
+              backgroundColor: [
+                'rgba(11,95,255,0.28)',
+                'rgba(11,95,255,0.22)',
+                'rgba(11,95,255,0.18)',
+                'rgba(11,95,255,0.14)'
+              ],
+              borderRadius: 6
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              y: { beginAtZero: true, ticks: { color: '#6b7280' }, grid: { color: '#eef2f7' } },
+              x: { ticks: { color: '#6b7280' }, grid: { display: false } }
+            }
+          }
+        });
+      }
+    } catch (e) {
+      // silent fallback if Chart.js fails; page still works
+      console.warn('Chart error', e);
+    }
+  </script>
 </body>
 </html>
