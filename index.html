@@ -1,19 +1,3 @@
-<!--
-**CAPSTONE PROJECTS**
-Portfolio Landing Page - Mini Project.
-Instructions:
-1) Save this file as `index.html` and place your images in an `images/` folder next to it.
-2) Replace the placeholder image filenames (images/img1.jpg...) with your artwork files.
-3) Edit any text below (bio, social links, email) to match your details.
-4) This is a single-file responsive page — open in browser to preview.
-5) Deploy easily on GitHub Pages or Netlify by uploading this single file + images.
-
-
-Notes on usage & legal: mark clearly if images are AI-assisted and whether they are demonstration-only.
-
-
-*/-->
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -39,141 +23,346 @@ Notes on usage & legal: mark clearly if images are AI-assisted and whether they 
       color: #0f1724;
     }
 
-    body{
-      background: linear-gradient(180deg, #f6f8fb 0%, #ffffff 100%);
-      color: #0f1724;
-      margin:0;
-      display:flex;
-      justify-content:center;
-      padding:28px 18px;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-    }
-
+    /* Base */
+    html,body{height:100%;margin:0;padding:0;background: linear-gradient(180deg,#f6f8fb 0%,#ffffff 100%);-webkit-font-smoothing:antialiased;}
+    body{display:flex;justify-content:center;padding:20px;}
     .wrap{width:100%;max-width:var(--maxw);}
 
     /* Header */
     header{
-      display:flex;
-      gap:20px;
-      align-items:center;
-      background:var(--card);
-      padding:20px;
-      border-radius:14px;
-      backdrop-filter: blur(4px);
-      box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+      display:flex;gap:16px;align-items:center;background:var(--card);padding:16px;border-radius:12px;
+      box-shadow:0 6px 16px rgba(0,0,0,0.06);flex-wrap:wrap;
     }
-
-    .photo{
-      width:108px;height:108px;border-radius:14px;
-      background:#e8eeff;
-      display:flex;align-items:center;justify-content:center;
-      font-weight:700;font-size:38px;color:var(--accent);
-      overflow:hidden;border:1px solid #d0daf7;
-    }
-
+    .photo{width:100px;height:100px;border-radius:12px;background:#e8eeff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:34px;color:var(--accent);overflow:hidden;border:1px solid #d0daf7;flex:0 0 100px;}
     .photo img{width:100%;height:100%;object-fit:cover;display:block;}
-
-    .hero{flex:1}
-    h1{margin:0;font-size:22px;color:#1f2937;}
-    .title{margin-top:6px;color:#4b5563;font-size:14px;}
+    .hero{flex:1;min-width:0}
+    h1{margin:0;font-size:20px;color:#1f2937;line-height:1.15;}
+    .title{margin-top:6px;color:#4b5563;font-size:13px}
     .contact{margin-top:10px;display:flex;gap:10px;flex-wrap:wrap;font-size:13px;color:#4b5563}
-    .contact a{color:var(--accent)}
+    .contact a{color:var(--accent);text-decoration:none}
+    .btns{display:flex;gap:10px;align-items:center}
 
-    .btns{margin-left:auto;display:flex;gap:10px;align-items:center}
+    .button{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 6px 16px rgba(11,95,255,0.18);font-size:13px;display:inline-block}
+    .ghost{background:white;border:1px solid #d1d5db;padding:8px 12px;border-radius:10px;color:#374151;text-decoration:none}
 
-    .button{
-      background:var(--accent);color:white;
-      padding:10px 14px;border-radius:10px;
-      text-decoration:none;font-weight:700;
-      box-shadow:0 6px 16px rgba(11,95,255,0.18);
-      font-size:13px;
-    }
-
-    .ghost{
-      background:white;border:1px solid #d1d5db;
-      padding:8px 12px;border-radius:10px;color:#374151;
-      text-decoration:none
-    }
-
-    /* Layout */
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr 350px;
-      gap:18px;
-      margin-top:18px;
-    }
-
-    .card{
-      background:var(--card);
-      padding:18px;border-radius:12px;
-      border:1px solid #e5e7eb;
-      box-shadow:0 6px 16px rgba(0,0,0,0.05);
-    }
-
-    h2{margin:0 0 12px 0;font-size:17px;color:#1f2937;}
+    /* Grid */
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:18px;align-items:start}
+    .card{background:var(--card);padding:16px;border-radius:10px;border:1px solid #e5e7eb;box-shadow:0 6px 16px rgba(0,0,0,0.05)}
+    h2{margin:0 0 10px 0;font-size:16px;color:#1f2937}
     .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#e0eaff;color:var(--accent);font-weight:700;font-size:13px;margin-bottom:8px}
-
-    /* Summary */
-    .summary{display:flex;gap:18px;}
-    .summary p{margin:0;color:#374151;line-height:1.5}
-
-    .metrics{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .metric{
-      background:#eef4ff;padding:10px 12px;border-radius:10px;
-      font-weight:700;color:var(--accent);font-size:13px;
-      border:1px solid #d6e2ff;
-    }
-
+    .summary{display:flex;gap:14px;flex-wrap:wrap}
+    .summary p{margin:0;color:#374151;line-height:1.45}
+    .metrics{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .metric{background:#eef4ff;padding:8px 10px;border-radius:10px;font-weight:700;color:var(--accent);font-size:13px;border:1px solid #d6e2ff}
     .small{font-size:13px;color:#6b7280;margin:6px 0}
-
     ul.clean{padding-left:18px;margin:8px 0;color:#374151}
-
-    /* Skills */
     .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-    .skill{
-      background:#f2f5ff;
-      padding:6px 10px;border-radius:8px;
-      color:#0b1e3d;font-weight:600;font-size:13px;
-      border:1px solid #d6defc;
-    }
-
-    /* Experience */
-    .role{margin-bottom:16px}
-    .role h3{margin:0;font-size:15px;color:#1f2937;}
+    .skill{background:#f2f5ff;padding:6px 10px;border-radius:8px;color:#0b1e3d;font-weight:600;font-size:13px;border:1px solid #d6defc}
+    .role{margin-bottom:14px}
+    .role h3{margin:0;font-size:15px;color:#1f2937}
     .meta{color:#6b7280;font-size:13px;margin:6px 0}
 
     /* Chart */
-    .chart-wrap{
-      height:220px;width:100%;
-      padding:8px;background:#f8faff;
-      border-radius:10px;border:1px solid #e5e7eb;
-    }
+    .chart-wrap{height:240px;width:100%;padding:8px;background:#f8faff;border-radius:8px;border:1px solid #e5e7eb;box-sizing:border-box}
 
     /* Gallery */
     .gallery{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-    .thumb{width:calc(50% - 8px);border-radius:8px;overflow:hidden;border:1px solid #e5e7eb;cursor:pointer}
-    .thumb img{width:100%;height:120px;object-fit:cover;display:block}
-
-    /* Lightbox */
-    .lightbox{
-      position:fixed;inset:0;background:rgba(0,0,0,0.75);
-      display:none;align-items:center;justify-content:center;z-index:9999;
-    }
-
+    .thumb{width:calc(50% - 8px);border-radius:8px;overflow:hidden;border:1px solid #e5e7eb;cursor:pointer;background:#fff}
+    .thumb img{width:100%;height:110px;object-fit:cover;display:block}
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.75);display:none;align-items:center;justify-content:center;z-index:9999}
     .lightbox img{max-width:92%;max-height:86%;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
-    .lightbox .close{
-      position:absolute;top:18px;right:24px;
-      background:white;padding:8px 10px;border-radius:8px;
-      cursor:pointer;font-weight:700;color:#111827;
+    .lightbox .close{position:absolute;top:18px;right:24px;background:white;padding:8px 10px;border-radius:8px;cursor:pointer;font-weight:700;color:#111827}
+
+    footer{margin-top:18px;color:#4b5563;font-size:14px}
+
+    /* Responsive tweaks */
+    @media (max-width:980px){
+      .grid{grid-template-columns:1fr}
+      .btns{width:100%;display:flex;gap:10px}
+      .button{flex:1;text-align:center}
+      .ghost{flex:1;text-align:center}
+      .photo{width:86px;height:86px;flex:0 0 86px;font-size:30px}
+      .hero h1{font-size:18px}
+      .chart-wrap{height:200px}
+      .thumb img{height:100px}
     }
 
-    footer{margin-top:20px;color:#4b5563;font-size:14px}
+    @media (max-width:640px){
+      body{padding:14px}
+      header{padding:12px}
+      .photo{width:72px;height:72px;font-size:26px}
+      h1{font-size:17px}
+      .title{font-size:13px}
+      .contact{font-size:12px}
+      .card{padding:12px}
+      .chart-wrap{height:180px}
+      .thumb{width:100%;} /* gallery single column on tiny phones */
+      .thumb img{height:220px;object-fit:contain;background:#fff}
+      .metric{font-size:12px;padding:8px}
+      .skills{gap:6px}
+      .skill{font-size:12px;padding:6px 8px}
+    }
 
-    @media (max-width:980px){.grid{grid-template-columns:1fr}}
-    @media (max-width:640px){.thumb{width:calc(50% - 6px)}}
+    @media (max-height:600px){
+      .chart-wrap{height:150px}
+    }
   </style>
 </head>
+<body>
+  <div class="wrap">
+
+    <!-- HEADER -->
+    <header>
+      <div class="photo" id="photo">
+        <img id="profileImg" src="images/profile.jpg" alt="Sowmya Sri" onerror="this.style.display='none'; document.getElementById('photo').textContent='SR'">
+      </div>
+
+      <div class="hero">
+        <h1>Sowmya Sri Rathnakumar</h1>
+        <div class="title">Business Analyst • Technical Support • AI-Powered Analytics (In Progress)</div>
+        <div class="contact">
+          <div>Coimbatore, India</div>
+          <div>📧 <a href="mailto:sowmyasrirathnakumar@gmail.com">sowmyasrirathnakumar@gmail.com</a></div>
+          <div>📱 +91 97515 54451</div>
+          <div>💼 <a href="https://linkedin.com/in/your-link-here" target="_blank">LinkedIn</a></div>
+        </div>
+      </div>
+
+      <div class="btns">
+        <a class="button" href="./Sowmya_Rathna_Resume.pdf" download>Download Résumé</a>
+        <a class="ghost" href="#contact">Contact</a>
+      </div>
+    </header>
+
+    <!-- MAIN GRID -->
+    <div class="grid">
+
+      <!-- LEFT COLUMN -->
+      <div>
+
+        <!-- SUMMARY -->
+        <section class="card summary">
+          <div style="flex:1">
+            <span class="pill">Profile</span>
+            <h2>Short profile — clear, confident & memorable</h2>
+            <p>
+              A results-driven Business Analyst and Technical Support specialist who turns customer pain points into structured, actionable product outcomes.
+              I blend frontline support experience, audit-ready documentation, and process optimisation with AI-assisted analytics — consistently reducing developer dependency and improving customer experience.
+            </p>
+
+            <div class="metrics" aria-hidden="true">
+              <div class="metric">200+ tickets/day</div>
+              <div class="metric">~90% resolved internally</div>
+              <div class="metric">CMMI / ISO documentation</div>
+            </div>
+          </div>
+
+          <div style="width:300px">
+            <h2>Why I’m the right BA + Support hybrid</h2>
+            <ul class="clean">
+              <li><strong>Customer-first analysis</strong>: Convert issues into product requirements</li>
+              <li><strong>Process optimisation</strong>: Reduced dev load with backend access</li>
+              <li><strong>Strong documentation</strong>: BRDs, SOPs, compliance & audits</li>
+              <li><strong>AI-ready</strong>: Gen-AI, Power BI with AI, SQL with AI, automation</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ONGOING LEARNING -->
+        <section class="card">
+          <h2>Ongoing learning — AI-Powered Business Analyst (Simplilearn)</h2>
+          <p class="small">A complete program focusing on AI analytics, automation, product thinking, and modern BA.</p>
+          <ul class="clean">
+            <li>CBAP</li>
+            <li>AI-powered Business Analytics with Excel</li>
+            <li>Gen-AI powered SQL for Business Analytics</li>
+            <li>Power BI with AI assistance</li>
+            <li>RPA & Process Mining basics</li>
+            <li>Agile frameworks & product-first thinking</li>
+            <li>BA Capstone project</li>
+            <li>Tableau Desktop Specialist</li>
+            <li>CCBA</li>
+            <li>Gen-AI & Prompt Engineering</li>
+            <li>Azure Data Fundamentals</li>
+          </ul>
+        </section>
+
+        <!-- STRENGTHS -->
+        <section class="card">
+          <h2>Core strengths</h2>
+          <ul class="clean">
+            <li><strong>Requirement gathering & BRDs</strong></li>
+            <li><strong>Support → Product handoff</strong>: demos, onboarding & workflows</li>
+            <li><strong>Documentation & audits</strong> (CMMI / ISO)</li>
+            <li><strong>AI-assisted analytics</strong>: Power BI (AI), Excel AI, SQL AI</li>
+            <li><strong>Escalation & SLA management</strong></li>
+            <li><strong>API testing (Postman)</strong></li>
+          </ul>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section class="card">
+          <h2>Experience</h2>
+
+          <div class="role">
+            <h3>Digitide Solutions — Technical Support Executive & Business Analyst</h3>
+            <div class="meta">2022 – Present</div>
+            <p>Managed 200+ tickets/day; enabled backend access for 90% internal resolution; authored BRDs, user guides, CMMI/ISO docs; led demos, escalations & API tests (Postman).</p>
+          </div>
+
+          <div class="role">
+            <h3>Klaus IT (Citrix R&D) — Technical Support Executive</h3>
+            <div class="meta">2021 – 2022</div>
+            <p>Supported North American enterprise clients — licensing, billing, Citrix Cloud issues; managed escalations and enterprise workflows.</p>
+          </div>
+
+          <div class="role">
+            <h3>Amazon Development Center — Customer Service Associate</h3>
+            <div class="meta">2020 – 2021</div>
+            <p>Multi-channel support; 80% first-contact resolution; handled high-volume calls & chats and identified recurring trends for product teams.</p>
+          </div>
+
+          <div class="role">
+            <h3>SASTRA University — Junior Research Fellow</h3>
+            <div class="meta">2017 – 2019</div>
+            <p>DST-SERB biosensor project; peer-reviewed publications and mentoring; enhanced analytical & documentation skills.</p>
+          </div>
+
+          <div class="role">
+            <h3>C-Cubed Solutions — Technical Support Representative</h3>
+            <div class="meta">2013 – 2014</div>
+            <p>Live chat support for Microsoft products; L3 escalation & training; recommended system improvements and documented solutions.</p>
+          </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="card">
+          <h2>Skills</h2>
+          <div class="skills">
+            <span class="skill">Requirement Gathering</span>
+            <span class="skill">BRDs</span>
+            <span class="skill">Escalation Management</span>
+            <span class="skill">Postman / API Testing</span>
+            <span class="skill">Power BI (AI)</span>
+            <span class="skill">Excel (AI)</span>
+            <span class="skill">SQL (Gen-AI)</span>
+            <span class="skill">Freshdesk</span>
+            <span class="skill">Tableau</span>
+            <span class="skill">Azure Data</span>
+            <span class="skill">RPA basics</span>
+          </div>
+        </section>
+
+        <!-- GALLERY -->
+        <section class="card">
+          <h2>Manager feedback screenshots</h2>
+          <p class="small">Place screenshots in /images/comment1.jpg ... comment6.jpg</p>
+          <div class="gallery" id="gallery"></div>
+        </section>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <aside class="panel card">
+        <h2>Key metrics</h2>
+        <div class="chart-wrap">
+          <canvas id="baChart"></canvas>
+        </div>
+
+        <h2 style="margin-top:14px">Quick facts</h2>
+        <p class="small">Amazon awards: Customer Obsession & Flash Award.</p>
+        <p class="small">Citrix R&D: Leadership board (3rd overall).</p>
+        <p class="small">Strong documentation, analytics & BA fundamentals.</p>
+
+        <h2 style="margin-top:12px">Contact</h2>
+        <p class="small">Email: <a href="mailto:sowmyasrirathnakumar@gmail.com">sowmyasrirathnakumar@gmail.com</a></p>
+        <p class="small">Phone: +91 97515 54451</p>
+        <a class="button" href="./Sowmya_Rathna_Resume.pdf" download style="margin-top:10px;display:inline-block">Download résumé</a>
+      </aside>
+
+    </div>
+
+    <footer id="contact">
+      <p>Ready to discuss how I can help improve your product & customer experience?</p>
+    </footer>
+
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <div class="close" onclick="closeLightbox(event)">✕</div>
+    <img id="lightboxImg" src="" alt="">
+  </div>
+
+  <script>
+    /***** CHART DATA *****/
+    const ctx=document.getElementById('baChart');
+    new Chart(ctx,{
+      type:'bar',
+      data:{
+        labels:['Tickets/day','In-house Resolution','FCR','Documentation'],
+        datasets:[{
+          label:'Impact',
+          data:[200,90,80,95],
+          backgroundColor:[
+            'rgba(11,95,255,0.25)',
+            'rgba(11,95,255,0.22)',
+            'rgba(11,95,255,0.20)',
+            'rgba(11,95,255,0.18)'
+          ],
+          borderRadius:8
+        }]
+      },
+      options:{
+        responsive:true,
+        maintainAspectRatio:false,
+        plugins:{legend:{display:false}},
+        scales:{
+          y:{beginAtZero:true,ticks:{color:'#4b5563'},grid:{color:'#e5e7eb'}},
+          x:{ticks:{color:'#4b5563'},grid:{display:false}}
+        }
+      }
+    });
+
+    /***** GALLERY RENDERER *****/
+    const galleryImages=[
+      'images/comment1.jpg','images/comment2.jpg','images/comment3.jpg',
+      'images/comment4.jpg','images/comment5.jpg','images/comment6.jpg'
+    ];
+
+    const gallery=document.getElementById('gallery');
+    galleryImages.forEach(src=>{
+      const img=new Image();
+      img.src=src;
+      img.onload=()=>{
+        const div=document.createElement('div');
+        div.className='thumb';
+        const t=document.createElement('img');
+        t.src=src;
+        t.alt = 'Manager feedback';
+        t.onclick=()=>openLightbox(src);
+        div.appendChild(t);
+        gallery.appendChild(div);
+      };
+    });
+
+    function openLightbox(src){
+      document.getElementById('lightboxImg').src=src;
+      document.getElementById('lightbox').style.display='flex';
+    }
+    function closeLightbox(e){
+      if(e.target.id==='lightbox' || e.target.classList.contains('close')){
+        document.getElementById('lightbox').style.display='none';
+        document.getElementById('lightboxImg').src='';
+      }
+    }
+
+    // Improve touch experience: prevent overscroll on lightbox
+    document.getElementById('lightbox').addEventListener('touchstart', function(e){ e.stopPropagation(); }, {passive:false});
+  </script>
+
+</body>
+</html></head>
 <body>
   <div class="wrap">
 
@@ -428,3 +617,4 @@ Notes on usage & legal: mark clearly if images are AI-assisted and whether they 
 
 </body>
 </html>
+
