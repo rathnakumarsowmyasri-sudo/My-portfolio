@@ -5,17 +5,14 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sowmya Sri Rathnakumar — Business Analyst & Technical Support</title>
 
-  <!-- Chart.js (optional) -->
+  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
 
   <style>
-    :root{
-      --accent:#0b5fff; --muted:#4b5563; --bg:#f6f8fb; --card:#ffffff; --maxw:1100px;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      color: #0f1724;
-    }
+    :root{--accent:#0b5fff;--muted:#4b5563;--bg:#f6f8fb;--card:#fff;--maxw:1100px;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:#0f1724}
     html,body{height:100%;margin:0;background:linear-gradient(180deg,#f6f8fb 0%,#fff 100%);-webkit-font-smoothing:antialiased}
     .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:20px;box-sizing:border-box}
+
     header{display:flex;gap:18px;align-items:center;background:var(--card);padding:18px;border-radius:14px;box-shadow:0 8px 22px rgba(0,0,0,0.06);flex-wrap:wrap}
     .photo{width:108px;height:108px;border-radius:14px;background:#e8eeff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:38px;color:var(--accent);overflow:hidden;border:1px solid #d0daf7;flex:0 0 108px}
     .photo img{width:100%;height:100%;object-fit:cover;display:block}
@@ -24,6 +21,7 @@
     .title{margin-top:6px;color:#4b5563;font-size:14px}
     .contact{margin-top:10px;display:flex;gap:10px;flex-wrap:wrap;font-size:13px;color:#4b5563}
     .contact a{color:var(--accent)}
+
     .btns{display:flex;gap:10px;align-items:center}
     .button{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 6px 16px rgba(11,95,255,0.18);font-size:13px;display:inline-flex;align-items:center;justify-content:center}
     .button.disabled{background:#c9d9ff;color:#6b7280;cursor:not-allowed;box-shadow:none}
@@ -33,48 +31,59 @@
     .card{background:var(--card);padding:18px;border-radius:12px;border:1px solid #e5e7eb;box-shadow:0 6px 16px rgba(0,0,0,0.05);box-sizing:border-box}
     h2{margin:0 0 12px 0;font-size:17px;color:#1f2937}
     .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#e0eaff;color:var(--accent);font-weight:700;font-size:13px;margin-bottom:8px}
+
     .summary{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
-    .summary > div{flex:1 1 0;min-width:0}
-    .summary > div:last-child{min-width:220px;max-width:380px;flex:0 0 min(40%,380px)}
+    .summary>div{flex:1 1 0;min-width:0}
+    .summary>div:last-child{min-width:220px;max-width:380px;flex:0 0 min(40%,380px)}
+
     .metrics{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
     .metric{background:#eef4ff;padding:10px 12px;border-radius:10px;font-weight:700;color:var(--accent);font-size:13px;border:1px solid #d6e2ff}
+
     .small{font-size:13px;color:#6b7280;margin:6px 0}
     ul.clean{padding-left:18px;margin:8px 0;color:#374151}
+
     .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
     .skill{background:#f2f5ff;padding:6px 10px;border-radius:8px;color:#0b1e3d;font-weight:600;font-size:13px;border:1px solid #d6defc}
+
     .role{margin-bottom:16px}
     .meta{color:#6b7280;font-size:13px;margin:6px 0}
+
     .chart-wrap{height:260px;width:100%;padding:8px;background:#f8faff;border-radius:10px;border:1px solid #e5e7eb;box-sizing:border-box}
+
     .gallery{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
     .thumb{width:calc(50% - 8px);border-radius:8px;overflow:hidden;border:1px solid #e5e7eb;cursor:pointer}
     .thumb img{width:100%;height:120px;object-fit:cover;display:block}
+
     .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.75);display:none;align-items:center;justify-content:center;z-index:9999}
     .lightbox img{max-width:92%;max-height:86%;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
     .lightbox .close{position:absolute;top:18px;right:24px;background:white;padding:8px 10px;border-radius:8px;cursor:pointer;font-weight:700;color:#111827}
+
     footer{margin-top:20px;color:#4b5563;font-size:14px}
-    @media (max-width:980px){ .grid{grid-template-columns:1fr} header{flex-direction:row;gap:12px} .btns{margin-left:auto} }
-    @media (max-width:720px){ header{flex-direction:column;align-items:stretch} .photo{margin:0 auto} .hero{text-align:center} .btns{display:flex;flex-direction:column;gap:8px;margin-left:0} .button,.ghost{width:100%} .summary{flex-direction:column} .card{padding:14px} h1{font-size:18px} .chart-wrap{height:200px} }
-    @media (max-width:420px){ .thumb img{height:92px} .photo{width:96px;height:96px} }
+
+    @media (max-width:980px){.grid{grid-template-columns:1fr}header{flex-direction:row;gap:12px}.btns{margin-left:auto}}
+    @media (max-width:720px){header{flex-direction:column;align-items:stretch}.photo{margin:0 auto}.hero{text-align:center}.btns{display:flex;flex-direction:column;gap:8px;margin-left:0}.button,.ghost{width:100%}.summary{flex-direction:column}.card{padding:14px}h1{font-size:18px}.chart-wrap{height:200px}}
+    @media (max-width:420px){.thumb img{height:92px}.photo{width:96px;height:96px}}
   </style>
 </head>
+
 <body>
   <div class="wrap">
 
+    <!-- ---------------- HEADER ---------------- -->
     <header>
       <div class="photo" id="photo">
-        <!-- profile image chosen by JS from available paths (Images/ or images/) -->
-        <img id="profileImg" src="" alt="profile" />
+        <img id="profileImg" src="" alt="Profile" />
       </div>
 
       <div class="hero">
         <h1>Sowmya Sri Rathnakumar</h1>
         <div class="title">Business Analyst • Technical Support • AI-Powered Analytics (In Progress)</div>
 
-        <div class="contact" aria-label="contact information">
+        <div class="contact">
           <div>Coimbatore, India</div>
           <div>📧 <a href="mailto:sowmyasrirathnakumar@gmail.com">sowmyasrirathnakumar@gmail.com</a></div>
           <div>📱 +91 97515 54451</div>
-          <div>💼 <a id="linkedin" href="https://linkedin.com/in/your-link-here" target="_blank" rel="noopener">LinkedIn</a></div>
+          <div>💼 <a href="https://linkedin.com/in/your-link-here" target="_blank">LinkedIn</a></div>
         </div>
       </div>
 
@@ -84,22 +93,25 @@
       </div>
     </header>
 
+    <!-- ---------------- MAIN GRID ---------------- -->
     <div class="grid">
       <div>
         <section class="card summary">
-          <div style="min-width:0">
+          <div>
             <span class="pill">Profile</span>
             <h2>Short profile — clear, confident & memorable</h2>
             <p>
               A results-driven Business Analyst and Technical Support specialist who turns customer pain points into structured, actionable product outcomes.
               I blend frontline support experience, audit-ready documentation, and process optimisation with AI-assisted analytics — consistently reducing developer dependency and improving customer experience.
             </p>
+
             <div class="metrics">
               <div class="metric">200+ tickets/day</div>
               <div class="metric">~90% resolved internally</div>
               <div class="metric">CMMI / ISO documentation</div>
             </div>
           </div>
+
           <div>
             <h2>Why I’m the right BA + Support hybrid</h2>
             <ul class="clean">
@@ -115,8 +127,8 @@
           <h2>Ongoing learning — AI-Powered Business Analyst (Simplilearn)</h2>
           <p class="small">A complete program focusing on AI analytics, automation, product thinking, and modern BA.</p>
           <ul class="clean">
-            <li>CBAP</li><li>AI-powered Business Analytics with Excel</li><li>Gen-AI powered SQL for Business Analytics</li><li>Power BI with AI assistance</li>
-            <li>RPA & Process Mining basics</li><li>Agile frameworks & product-first thinking</li><li>BA Capstone project</li><li>Tableau Desktop Specialist</li>
+            <li>CBAP</li><li>AI-powered Business Analytics with Excel</li><li>Gen-AI powered SQL</li><li>Power BI with AI</li>
+            <li>RPA & Process Mining</li><li>Agile frameworks</li><li>Capstone project</li><li>Tableau Specialist</li>
             <li>CCBA</li><li>Gen-AI & Prompt Engineering</li><li>Azure Data Fundamentals</li>
           </ul>
         </section>
@@ -125,9 +137,9 @@
           <h2>Core strengths</h2>
           <ul class="clean">
             <li><strong>Requirement gathering & BRDs</strong></li>
-            <li><strong>Support → Product handoff</strong>: demos, onboarding & workflows</li>
+            <li><strong>Support → Product handoff</strong></li>
             <li><strong>Documentation & audits</strong> (CMMI / ISO)</li>
-            <li><strong>AI-assisted analytics</strong>: Power BI (AI), Excel AI, SQL AI</li>
+            <li><strong>AI-assisted analytics</strong>: Power BI, Excel AI, SQL AI</li>
             <li><strong>Escalation & SLA management</strong></li>
             <li><strong>API testing (Postman)</strong></li>
           </ul>
@@ -135,170 +147,111 @@
 
         <section class="card">
           <h2>Experience</h2>
-          <div class="role"><h3>Digitide Solutions — Technical Support Executive & Business Analyst</h3><div class="meta">2022 – Present</div><p>Managed 200+ tickets/day; enabled backend access for 90% internal resolution; authored BRDs, user manuals, CMMI/ISO docs; led demos, escalations & API testing.</p></div>
-          <div class="role"><h3>Klaus IT (Citrix R&D) — Technical Support Executive</h3><div class="meta">2021 – 2022</div><p>Supported enterprise Citrix Cloud accounts, licensing, billing & escalations.</p></div>
-          <div class="role"><h3>Amazon Development Center — Customer Service Associate</h3><div class="meta">2020 – 2021</div><p>Handled multi-channel support; 80% FCR; managed heavy volume of calls & chats.</p></div>
-          <div class="role"><h3>SASTRA University — Junior Research Fellow</h3><div class="meta">2017 – 2019</div><p>Research, documentation & mentoring; DST-SERB biosensor project.</p></div>
-          <div class="role"><h3>C-Cubed Solutions — Technical Support Representative</h3><div class="meta">2013 – 2014</div><p>Microsoft chat support; L3 escalations; documentation & training.</p></div>
+
+          <div class="role">
+            <h3>Digitide Solutions — Technical Support Executive & Business Analyst</h3>
+            <div class="meta">2022 – Present</div>
+            <p>Managed 200+ tickets/day, 90% internal resolution, BRDs, user manuals, demos, escalations, API testing.</p>
+          </div>
+
+          <div class="role">
+            <h3>Klaus IT (Citrix R&D)</h3>
+            <div class="meta">2021 – 2022</div>
+            <p>Supported Citrix Cloud enterprise accounts, licensing, billing, escalations.</p>
+          </div>
+
+          <div class="role">
+            <h3>Amazon Development Center</h3>
+            <div class="meta">2020 – 2021</div>
+            <p>Handled multi-channel support, 80% FCR, high-volume calls/chats.</p>
+          </div>
+
+          <div class="role">
+            <h3>SASTRA University — Junior Research Fellow</h3>
+            <div class="meta">2017 – 2019</div>
+            <p>Research, documentation, mentoring; DST-SERB biosensor project.</p>
+          </div>
+
+          <div class="role">
+            <h3>C-Cubed Solutions</h3>
+            <div class="meta">2013 – 2014</div>
+            <p>Microsoft L3 chat support, documentation & training.</p>
+          </div>
         </section>
 
         <section class="card">
           <h2>Skills</h2>
           <div class="skills">
-            <span class="skill">Requirement Gathering</span><span class="skill">BRDs</span><span class="skill">Escalation Management</span>
-            <span class="skill">Postman / API Testing</span><span class="skill">Power BI (AI)</span><span class="skill">Excel (AI)</span>
-            <span class="skill">SQL (Gen-AI)</span><span class="skill">Freshdesk</span><span class="skill">Tableau</span>
-            <span class="skill">Azure Data</span><span class="skill">RPA basics</span>
+            <span class="skill">Requirement Gathering</span><span class="skill">BRDs</span><span class="skill">Escalation Mgmt</span>
+            <span class="skill">Postman</span><span class="skill">Power BI</span><span class="skill">Excel (AI)</span>
+            <span class="skill">SQL (AI)</span><span class="skill">Freshdesk</span><span class="skill">Tableau</span>
+            <span class="skill">Azure Data</span><span class="skill">RPA</span>
           </div>
         </section>
 
         <section class="card">
           <h2>Manager feedback screenshots</h2>
-          <p class="small">Place screenshots in /Images or /images named comment1.jpg ... comment6.jpg</p>
-          <div class="gallery" id="gallery" aria-live="polite"></div>
+          <p class="small">Place screenshots in /Images or /images as comment1.jpg ... comment6.jpg</p>
+          <div class="gallery" id="gallery"></div>
         </section>
       </div>
 
+      <!-- RIGHT COLUMN -->
       <aside class="panel card">
         <h2>Key metrics</h2>
-        <div class="chart-wrap"><canvas id="baChart" role="img" aria-label="bar chart of key metrics"></canvas></div>
-        <h2 style="margin-top:16px">Quick facts</h2>
-        <p class="small">Amazon awards: Customer Obsession & Flash Award.</p>
-        <p class="small">Citrix R&D: Leadership board (3rd overall).</p>
-        <p class="small">Strong documentation, analytics & BA fundamentals.</p>
+        <div class="chart-wrap"><canvas id="baChart"></canvas></div>
 
-        <h2 style="margin-top:16px">Contact</h2>
-        <p class="small">Email: <a href="mailto:sowmyasrirathnakumar@gmail.com">sowmyasrirathnakumar@gmail.com</a></p>
-        <p class="small">Phone: +91 97515 54451</p>
-        <a id="resumeBtn2" class="button" href="#" download>Download résumé</a>
+        <h2 style="margin-top:16px">Quick facts</h2>
+        <p class="small">Amazon: Customer Obsession & Flash Award.</p>
+        <p class="small">Citrix R&D: Leadership board (3rd).</p>
+        <p class="small">Strong documentation, analytics & BA fundamentals.</p>
       </aside>
     </div>
 
-    <footer id="contact"><p>Ready to discuss how I can help improve your product & customer experience?</p></footer>
+    <footer id="contact">
+      <p>Ready to discuss how I can help improve your product & customer experience?</p>
+    </footer>
   </div>
 
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="close" role="button" aria-label="Close" onclick="closeLightbox(event)" tabindex="0">✕</div>
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <div class="close" onclick="closeLightbox(event)">✕</div>
     <img id="lightboxImg" src="" alt="">
   </div>
 
   <script>
-    /* placeholder image data URI */
-    const svgPlaceholder = 'data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400'><rect width='100%' height='100%' fill='#eef4ff'/><text x='300' y='220' font-size='20' fill='#7e9cf7' text-anchor='middle' font-family='Arial, sans-serif'>Image not found</text></svg>`);
+    const svgPlaceholder='data:image/svg+xml;utf8,'+encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400'><rect width='100%' height='100%' fill='#eef4ff'/><text x='300' y='220' font-size='20' fill='#7e9cf7' text-anchor='middle' font-family='Arial'>Image not found</text></svg>");
 
-    /* Try multiple candidate paths for images (Images/ and images/, jpg/png) */
-    function testImagePaths(candidates, callback){
-      let i=0;
-      function next(){
-        if(i>=candidates.length){ callback(null); return; }
-        const url = candidates[i++];
-        const img = new Image();
-        img.onload = ()=> callback(url);
-        img.onerror = ()=> next();
-        img.src = url;
-      }
-      next();
-    }
+    function testImagePaths(list,cb){let i=0;function next(){if(i>=list.length){cb(null);return;}let url=list[i++];let im=new Image();im.onload=()=>cb(url);im.onerror=()=>next();im.src=url;}next();}
 
-    // set profile image from likely locations
-    const profileCandidates = ['Images/profile.jpg','images/profile.jpg','Images/profile.png','images/profile.png','images/profile.jpeg','images/profile.webp'];
-    testImagePaths(profileCandidates, function(found){
-      const profileImg = document.getElementById('profileImg');
-      if(found){ profileImg.src = found; profileImg.alt='Profile'; }
-      else { profileImg.src = svgPlaceholder; profileImg.alt='Profile placeholder'; }
-    });
+    const profileCandidates=['Images/profile.jpg','images/profile.jpg','Images/profile.png','images/profile.png'];
+    testImagePaths(profileCandidates,(f)=>{let el=document.getElementById('profileImg');if(f){el.src=f;}else{el.src=svgPlaceholder;}});
 
-    // gallery items: try both Images/commentN and images/commentN
-    const galleryNames = ['comment1','comment2','comment3','comment4','comment5','comment6'];
-    const galleryEl = document.getElementById('gallery');
-    function tryGalleryFor(name, cb){
-      const candidates = [
-        `Images/${name}.jpg`, `images/${name}.jpg`,
-        `Images/${name}.png`, `images/${name}.png`,
-        `Images/${name}.jpeg`, `images/${name}.webp`
-      ];
-      testImagePaths(candidates, function(found){
-        cb(found||null);
-      });
-    }
-    galleryNames.forEach(n=>{
-      tryGalleryFor(n,function(found){
-        const div=document.createElement('div'); div.className='thumb'; div.tabIndex=0;
-        const img=document.createElement('img');
-        img.src = found || svgPlaceholder;
-        img.alt = found ? n : 'Placeholder';
-        img.loading='lazy';
-        img.onerror = ()=> { if(img.src !== svgPlaceholder) img.src = svgPlaceholder; };
-        img.onclick = ()=> openLightbox(img.src,img.alt);
-        div.onkeydown = (e)=> { if(e.key==='Enter' || e.key===' ') openLightbox(img.src,img.alt); };
-        div.appendChild(img); galleryEl.appendChild(div);
-      });
-    });
+    const galleryNames=['comment1','comment2','comment3','comment4','comment5','comment6'];
+    const galEl=document.getElementById('gallery');
+    function tryGallery(name,cb){testImagePaths([`Images/${name}.jpg`,`images/${name}.jpg`,`Images/${name}.png`,`images/${name}.png`],x=>cb(x||null));}
+    galleryNames.forEach(n=>tryGallery(n,f=>{let d=document.createElement('div');d.className='thumb';let i=document.createElement('img');i.src=f||svgPlaceholder;i.onclick=()=>openLightbox(i.src);d.appendChild(i);galEl.appendChild(d);}))
 
-    // Chart
-    window.addEventListener('load', function(){
-      const ctx = document.getElementById('baChart');
-      if (ctx && window.Chart){
-        new Chart(ctx, {
-          type:'bar',
-          data:{
-            labels:['Tickets/day','In-house Resolution','FCR','Documentation'],
-            datasets:[{
-              label:'Impact',
-              data:[200,90,80,95],
-              backgroundColor:['rgba(11,95,255,0.25)','rgba(11,95,255,0.22)','rgba(11,95,255,0.20)','rgba(11,95,255,0.18)'],
-              borderRadius:8
-            }]
-          },
-          options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{color:'#4b5563'},grid:{color:'#e5e7eb'}},x:{ticks:{color:'#4b5563'},grid:{display:false}}}}
-        });
-      }
-    });
+    window.addEventListener('load',()=>{if(window.Chart){new Chart(document.getElementById('baChart'),{type:'bar',data:{labels:['Tickets/day','In-house Resolution','FCR','Documentation'],datasets:[{data:[200,90,80,95],backgroundColor:['rgba(11,95,255,0.25)','rgba(11,95,255,0.22)','rgba(11,95,255,0.20)','rgba(11,95,255,0.18)'],borderRadius:8}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true},x:{}}}});}});
 
-    // Lightbox handlers
-    function openLightbox(src, alt){ const lb=document.getElementById('lightbox'); const img=document.getElementById('lightboxImg'); img.src=src; img.alt=alt||''; lb.style.display='flex'; lb.setAttribute('aria-hidden','false'); const closeBtn=lb.querySelector('.close'); if(closeBtn) closeBtn.focus(); }
-    function closeLightbox(e){ if (e.type==='click'){ if(e.target.id==='lightbox' || e.target.classList.contains('close')) hideLightbox(); } else if (e.type==='keydown' && e.key==='Escape') hideLightbox(); }
-    function hideLightbox(){ const lb=document.getElementById('lightbox'); const img=document.getElementById('lightboxImg'); lb.style.display='none'; lb.setAttribute('aria-hidden','true'); img.src=''; img.alt=''; }
-    document.addEventListener('keydown', closeLightbox);
+    function openLightbox(src){let lb=document.getElementById('lightbox');document.getElementById('lightboxImg').src=src;lb.style.display='flex';}
+    function closeLightbox(e){if(e.target.id==='lightbox'||e.target.classList.contains('close')){document.getElementById('lightbox').style.display='none';document.getElementById('lightboxImg').src='';}}
 
-    /* Resume button: try several likely filenames and enable the button to the first that exists.
-       This lets you keep the resume file as-is in your repo (no renaming needed). */
-    const resumeBtn = document.getElementById('resumeBtn');
-    const resumeBtn2 = document.getElementById('resumeBtn2');
-    const resumeCandidates = [
-      'SOWMYA%20SRI%20RATHNAKUMAR.pdf','SOWMYA_SRI_RATHNAKUMAR.pdf','SOWMYA-RATHNAKUMAR.pdf',
-      'Sowmya_Rathna_Resume.pdf','Sowmya_Rathna_Resume.PDF','resume.pdf','SOWMYA_RATHNAKUMAR.pdf',
-      'Sowmya_Rathnakumar.pdf','Sowmya_Rathna.pdf'
-    ];
-
-    // try HEAD requests to find the first existing resume
     (function findResume(){
+      const btn=document.getElementById('resumeBtn');
+      const candidates=[
+        'Sowmya Sri Rathnakumar.pdf','SOWMYA SRI RATHNAKUMAR.pdf',
+        'Sowmya_Sri_Rathnakumar.pdf','Sowmya_Rathna_Resume.pdf','resume.pdf'
+      ];
       let i=0;
       function next(){
-        if(i>=resumeCandidates.length){ disableResume('Upload resume to repo'); return; }
-        const candidate = resumeCandidates[i++].replace(/%20/g,' ');
-        // try both exact name and URL-encoded version (GitHub serves files with original names)
-        fetch(encodeURI(candidate), {method:'HEAD'}).then(res=>{
-          if(res.ok){
-            enableResume(encodeURI(candidate)); // use encoded URI for href
-          } else next();
-        }).catch(()=> next());
-      }
-      function enableResume(href){
-        resumeBtn.href = href; resumeBtn2.href = href;
-        resumeBtn.classList.remove('disabled'); resumeBtn2.classList.remove('disabled');
-        resumeBtn.textContent = 'Download Résumé'; resumeBtn2.textContent='Download résumé';
-        resumeBtn.setAttribute('download',''); resumeBtn2.setAttribute('download','');
-      }
-      function disableResume(msg){
-        resumeBtn.href='#'; resumeBtn2.href='#';
-        resumeBtn.classList.add('disabled'); resumeBtn2.classList.add('disabled');
-        resumeBtn.textContent = msg; resumeBtn2.textContent = msg;
-        resumeBtn.removeAttribute('download'); resumeBtn2.removeAttribute('download');
+        if(i>=candidates.length){btn.classList.add('disabled');btn.textContent='Upload resume to repo';return;}
+        let f=candidates[i++];
+        fetch(encodeURI(f),{method:'HEAD'}).then(r=>{if(r.ok){btn.href=encodeURI(f);}else next();}).catch(()=>next());
       }
       next();
     })();
   </script>
+
 </body>
 </html>
