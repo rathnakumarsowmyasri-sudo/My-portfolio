@@ -34,7 +34,6 @@
       width:112px;height:112px;border-radius:14px;background:#eef4ff;display:flex;align-items:center;justify-content:center;
       overflow:hidden;border:1px solid #dbe9ff;flex:0 0 112px;
     }
-    /* ensure images fit without cropping - letterbox when necessary */
     .photo img{width:100%;height:100%;object-fit:contain;background:#eef4ff;display:block;padding:12px;box-sizing:border-box}
 
     .hero{flex:1 1 auto;min-width:0}
@@ -86,10 +85,13 @@
     .thumb{width:calc(50% - 12px);border-radius:8px;overflow:hidden;border:1px solid #eef2f8;cursor:pointer;background:#fff;display:flex;align-items:center;justify-content:center}
     .thumb img{width:100%;height:120px;object-fit:contain;display:block;background:#fafcff;padding:6px;box-sizing:border-box}
 
-    /* Lightbox */
+    /* Lightbox (controls added) */
     .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.75);display:none;align-items:center;justify-content:center;z-index:9999}
-    .lightbox img{max-width:92%;max-height:86%;border-radius:8px;box-shadow:0 30px 60px rgba(0,0,0,0.5)}
-    .lightbox .close{position:absolute;top:18px;right:24px;background:white;padding:8px 10px;border-radius:8px;cursor:pointer;font-weight:700;color:#111827}
+    .lightbox img{max-width:92%;max-height:86%;border-radius:8px}
+    .lb-close{position:absolute;top:18px;right:22px;background:white;border-radius:8px;padding:8px 10px;cursor:pointer;z-index:10002;border:none}
+    .lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.95);border-radius:999px;width:44px;height:44px;font-size:22px;border:none;cursor:pointer;z-index:10001}
+    .lb-prev{left:20px}
+    .lb-next{right:20px}
 
     footer{margin-top:20px;color:var(--muted);font-size:14px}
 
@@ -99,7 +101,7 @@
     /* uniform spacing & gallery tweaks (ensures consistent rhythm) */
     .card { padding: 18px; margin-bottom: 18px; }
     .panel.card { padding: 16px; margin-bottom: 16px; }
-    #managersCard { padding: 16px; margin-bottom: 16px; }
+    #managersCard { padding: 12px; margin-bottom: 12px; }
     .gallery .thumb { width: calc(50% - 12px); }
     .gallery .thumb img { height:110px; object-fit:contain; }
     #galleryAside .thumb { width: calc(50% - 8px); }
@@ -107,6 +109,21 @@
     .chart-wrap { margin-bottom: 12px; }
     h2 { margin-bottom: 10px; }
     .subheading, h3 { margin-top: 6px; margin-bottom: 6px; }
+
+    /* fixes requested in markup */
+    body, p, li { line-height: 1.58; color: #172033; font-size: 15px; }
+    h1 { line-height: 1.15; }
+    h2 { line-height: 1.25; font-weight:700; }
+    h3, .subheading { line-height: 1.28; font-weight:600; font-size:15px; }
+    .card > * + * { margin-top: 12px; } /* consistent internal spacing */
+    .role h3, .role .meta, .role ul { overflow: visible; word-break: break-word; white-space: normal; }
+
+    /* summary alignment so core skills lines up with metrics */
+    .summary { align-items:flex-start; }
+    .summary > div { display:flex; flex-direction:column; }
+
+    /* make aside cards compact */
+    aside.panel, aside.panel .card { padding: 12px; margin-bottom: 12px; }
 
     @media (max-width:1000px){.grid{grid-template-columns:1fr}}
     @media (max-width:720px){
@@ -305,8 +322,8 @@
           <canvas id="baChart" aria-label="Bar chart showing BA metrics"></canvas>
         </div>
 
-        <!-- moved managers/testimonials here to remove gap -->
-        <section class="card" id="managersCard" style="padding:12px;">
+        <!-- moved managers/testimonials here -->
+        <section class="card" id="managersCard">
           <h3 style="margin:0 0 8px 0;font-size:15px;">What My Managers Say</h3>
           <p style="margin:0 0 8px 0;color:var(--muted);font-size:13px;">
             Reliable and proactive | Creates clear, accurate documentation | Strong in analysis & validation | Trusted for critical tasks
@@ -322,31 +339,34 @@
           <li>Expert at turning support signals into product outcomes; audit-ready documentation experience (CMMI / ISO).</li>
         </ul>
 
-        <h2 style="margin-top:16px">Contact</h2>
+        <!-- Beyond Work now in aside -->
+        <section class="card" id="beyondWork" style="padding:12px; margin-top:12px;">
+          <h3 class="subheading" style="margin:0 0 6px 0;">Beyond Work</h3>
+          <div style="font-size:14.5px; color:#1f2937; margin-bottom:6px; font-weight:600;">
+            Creative writing | storytelling | mythology reading
+          </div>
+          <p style="margin:0;font-size:15px;line-height:1.5;">
+            Pursuits that enhance my clarity, structure, empathy, and communication as a Business Analyst.
+          </p>
+        </section>
+
+        <h2 style="margin-top:12px">Contact</h2>
         <p class="small">Email: <a href="mailto:sowmyasrirathnakumar@gmail.com">sowmyasrirathnakumar@gmail.com</a></p>
         <p class="small">Phone: +91 97515 54451</p>
       </aside>
     </div>
 
-    <!-- Beyond Work - placed after grid -->
-    <section class="card">
-      <h2>Beyond Work</h2>
-      <h3 class="subheading">Creative writing | storytelling | mythology reading</h3>
-      <p style="margin-top:8px;font-size:15px;line-height:1.5">
-        Pursuits that enhance my clarity, structure, empathy, and communication as a Business Analyst.
-      </p>
-    </section>
-
-    <!-- Quick facts (kept / duplicated moved into aside already) -->
     <footer id="contact">
       <p class="small" style="margin-top:18px">Ready to discuss how I can help improve your product & customer experience?</p>
     </footer>
   </div>
 
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="close" role="button" aria-label="Close" onclick="closeLightbox(event)" tabindex="0">✕</div>
+  <!-- Lightbox with prev/next -->
+  <div id="lightbox" class="lightbox" onclick="lightboxClick(event)" role="dialog" aria-modal="true" aria-hidden="true">
+    <button class="lb-close" aria-label="Close" onclick="hideLightbox()">✕</button>
+    <button class="lb-prev" aria-label="Previous" onclick="showPrevImage()">‹</button>
     <img id="lightboxImg" src="" alt="">
+    <button class="lb-next" aria-label="Next" onclick="showNextImage()">›</button>
   </div>
 
   <script>
@@ -375,7 +395,46 @@
       else { el.src = svgPlaceholder; el.alt = 'Profile placeholder'; }
     });
 
-    /* GALLERY: render into aside gallery (#galleryAside) */
+    /* LIGHTBOX STATE & helpers */
+    const lightboxState = { images: [], index: -1 };
+
+    function openLightbox(src, alt){
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightboxImg');
+      lbImg.src = src; lbImg.alt = alt || '';
+      lb.style.display = 'flex'; lb.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+      const idx = lightboxState.images.indexOf(src);
+      lightboxState.index = idx >= 0 ? idx : 0;
+    }
+    function hideLightbox(){
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightboxImg');
+      lb.style.display = 'none'; lb.setAttribute('aria-hidden','true');
+      lbImg.src = ''; lbImg.alt = '';
+      document.body.style.overflow = '';
+    }
+    function showPrevImage(){
+      if(lightboxState.images.length === 0) return;
+      lightboxState.index = (lightboxState.index - 1 + lightboxState.images.length) % lightboxState.images.length;
+      document.getElementById('lightboxImg').src = lightboxState.images[lightboxState.index];
+    }
+    function showNextImage(){
+      if(lightboxState.images.length === 0) return;
+      lightboxState.index = (lightboxState.index + 1) % lightboxState.images.length;
+      document.getElementById('lightboxImg').src = lightboxState.images[lightboxState.index];
+    }
+    function lightboxClick(e){
+      if(e.target.id === 'lightbox') hideLightbox();
+    }
+    document.addEventListener('keydown', function(e){
+      if(document.getElementById('lightbox').style.display !== 'flex') return;
+      if(e.key === 'Escape') hideLightbox();
+      if(e.key === 'ArrowLeft') showPrevImage();
+      if(e.key === 'ArrowRight') showNextImage();
+    });
+
+    /* GALLERY: render into aside gallery (#galleryAside) and populate lightboxState.images */
     const galleryNames = ['comment1','comment2','comment3','comment4','comment5','comment6','comment7','comment8','comment9','comment10'];
     const galleryAside = document.getElementById('galleryAside');
     galleryNames.forEach(name=>{
@@ -386,6 +445,8 @@
         img.alt = found ? name : 'Placeholder';
         img.loading='lazy';
         img.onerror = ()=>{ if(img.src!==svgPlaceholder) img.src=svgPlaceholder; };
+        // push into lightbox list (maintain order)
+        lightboxState.images.push(img.src);
         img.onclick = ()=> openLightbox(img.src, img.alt);
         div.appendChild(img);
         if(galleryAside) galleryAside.appendChild(div);
@@ -424,28 +485,7 @@
       });
     });
 
-    /* Lightbox */
-    function openLightbox(src, alt){
-      const lb = document.getElementById('lightbox');
-      const lbImg = document.getElementById('lightboxImg');
-      lbImg.src = src; lbImg.alt = alt || '';
-      lb.style.display = 'flex'; lb.setAttribute('aria-hidden','false');
-      const closeBtn = lb.querySelector('.close'); if(closeBtn) closeBtn.focus();
-    }
-    function closeLightbox(e){
-      if(e.type === 'click'){
-        if(e.target.id === 'lightbox' || e.target.classList.contains('close')) hideLightbox();
-      } else if(e.type === 'keydown' && e.key === 'Escape') hideLightbox();
-    }
-    function hideLightbox(){
-      const lb = document.getElementById('lightbox');
-      const lbImg = document.getElementById('lightboxImg');
-      lb.style.display = 'none'; lb.setAttribute('aria-hidden','true');
-      lbImg.src = ''; lbImg.alt = '';
-    }
-    document.addEventListener('keydown', closeLightbox);
-
-    /* Resume: direct link to resume.pdf in repo root (user set file to resume.pdf) */
+    /* Resume: direct link to resume.pdf in repo root */
     (function ensureResumeHref(){
       const btn = document.getElementById('resumeDownload');
       if(!btn) return;
@@ -454,4 +494,4 @@
     })();
   </script>
 </body>
-            </html>
+  </html>
