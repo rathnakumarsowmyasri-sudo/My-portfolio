@@ -40,19 +40,20 @@
     .hero{flex:1 1 auto;min-width:0}
     h1{margin:0;font-size:20px;color:#0f1724;letter-spacing:0.1px}
     .subtitle{margin-top:6px;color:var(--muted);font-size:13.5px}
-    .contact{margin-top:10px;display:flex;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
-    .contact a{color:var(--accent);text-decoration:underline}
+    .contact{margin-top:10px;display:flex;gap:10px;flex-wrap:wrap;font-size:13.5px;color:var(--muted);align-items:center}
+    .contact a{color:var(--accent);text-decoration:none}
+    .contact span.separator{color:#9aa4b2;margin:0 6px}
 
     .btns{display:flex;gap:10px;align-items:center}
     .button{
       background:var(--accent);color:white;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700;
       box-shadow:0 8px 20px rgba(11,95,255,0.16);font-size:13px;display:inline-flex;align-items:center;justify-content:center;
     }
-    .ghost{background:white;border:1px solid #e6edf9;padding:8px 12px;border-radius:10px;color:#334155;text-decoration:none;display:inline-flex;align-items:center}
+    .button.disabled{background:#c9d9ff;color:#6b7280;cursor:not-allowed;box-shadow:none}
 
     /* layout */
     .grid{display:grid;grid-template-columns:1fr 380px;gap:20px;margin-top:18px}
-    .card{background:var(--card);padding:18px;border-radius:12px;border:1px solid #eef2f8;box-shadow:0 6px 20px rgba(15,23,36,0.04);box-sizing:border-box}
+    .card{background:var(--card);padding:18px;border-radius:12px;border:1px solid #eef2f8;box-shadow:0 6px 20px rgba(15,23,36,0.04);box-sizing:border-box;margin-bottom:18px}
     h2{margin:0 0 12px 0;font-size:17px;color:#081127}
     .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#e9f0ff;color:var(--accent);font-weight:700;font-size:13px;margin-bottom:8px}
 
@@ -92,17 +93,33 @@
 
     footer{margin-top:20px;color:var(--muted);font-size:14px}
 
-    /* responsive */
+    /* small helper classes */
+    .subheading{font-size:15px;font-weight:600;color:#1f2937;margin:6px 0 4px}
+
+    /* uniform spacing & gallery tweaks (ensures consistent rhythm) */
+    .card { padding: 18px; margin-bottom: 18px; }
+    .panel.card { padding: 16px; margin-bottom: 16px; }
+    #managersCard { padding: 16px; margin-bottom: 16px; }
+    .gallery .thumb { width: calc(50% - 12px); }
+    .gallery .thumb img { height:110px; object-fit:contain; }
+    #galleryAside .thumb { width: calc(50% - 8px); }
+    #galleryAside .thumb img { height:96px; }
+    .chart-wrap { margin-bottom: 12px; }
+    h2 { margin-bottom: 10px; }
+    .subheading, h3 { margin-top: 6px; margin-bottom: 6px; }
+
     @media (max-width:1000px){.grid{grid-template-columns:1fr}}
     @media (max-width:720px){
       header{flex-direction:column;align-items:stretch}
       .photo{margin:0 auto}
       .hero{text-align:center}
       .btns{display:flex;flex-direction:column;gap:8px;margin-left:0}
-      .button,.ghost{width:100%}
+      .button{width:100%}
       .summary{flex-direction:column}
       .card{padding:14px}
       .chart-wrap{height:220px}
+      .gallery .thumb img { height:82px; }
+      #galleryAside .thumb img { height:72px; }
     }
   </style>
 </head>
@@ -116,42 +133,56 @@
       </div>
 
       <div class="hero">
-  <h1>Sowmya Sri Rathnakumar</h1>
-  <div class="subtitle">Business Analyst — Support & Product | Requirements, Documentation, Process & Analytics</div>
+        <h1>Sowmya Sri Rathnakumar</h1>
+        <div class="subtitle">Business Analyst — Support & Product | Requirements, Documentation, Process & Analytics</div>
 
-  <div class="contact" aria-label="contact information" 
-       style="display:flex; flex-wrap:wrap; gap:6px; font-size:13.5px; align-items:center;">
+        <!-- Contact line with SVG icons and | separators -->
+        <div class="contact" aria-label="contact information">
+          <span style="display:flex;align-items:center;gap:6px;">
+            <!-- location pin -->
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 6-9 13-9 13S3 16 3 10a9 9 0 1 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Coimbatore, India</span>
+          </span>
 
-      <span>📍 Coimbatore, India</span>
-      <span>|</span>
+          <span class="separator">|</span>
 
-      <span>📧 
-        <a href="mailto:sowmyasrirathnakumar@gmail.com">
-        sowmyasrirathnakumar@gmail.com
-        </a>
-      </span>
-      <span>|</span>
+          <span style="display:flex;align-items:center;gap:6px;">
+            <!-- email -->
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <a href="mailto:sowmyasrirathnakumar@gmail.com">sowmyasrirathnakumar@gmail.com</a>
+          </span>
 
-      <span>📱 
-        <a href="tel:+919751554451">
-        +91 97515 54451
-        </a>
-      </span>
-      <span>|</span>
+          <span class="separator">|</span>
 
-      <span>💼 
-        <a href="https://www.linkedin.com/in/sowmya-sri-rathnakumar-57759974?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-           target="_blank" rel="noopener">
-        LinkedIn
-        </a>
-      </span>
-  </div>
-</div>
+          <span style="display:flex;align-items:center;gap:6px;">
+            <!-- phone -->
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.07 5.18 2 2 0 0 1 5.05 3h3a2 2 0 0 1 2 1.72c.12.8.33 1.57.57 2.3"></path>
+              <path d="M16 11a4 4 0 0 1-8 0"></path>
+            </svg>
+            <a href="tel:+919751554451">+91 97515 54451</a>
+          </span>
 
-      <div class="btns">
-        <!-- Direct download to PDF in repo root (exact filename used below) -->
+          <span class="separator">|</span>
+
+          <span style="display:flex;align-items:center;gap:6px;">
+            <!-- linkedin -->
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent)" aria-hidden="true">
+              <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.22 8.99H4.8v14.03H.22V8.99zM8.56 8.99H13v1.91h.06c.62-1.17 2.13-2.4 4.39-2.4 4.69 0 5.55 3.09 5.55 7.11v8.41h-4.57v-7.45c0-1.78-.04-4.07-2.48-4.07-2.48 0-2.86 1.94-2.86 3.95v7.57H8.56V8.99z"/>
+            </svg>
+            <a href="https://www.linkedin.com/in/sowmya-sri-rathnakumar-57759974?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener">LinkedIn</a>
+          </span>
+        </div>
+      </div>
+
+      <div class="btns" style="margin-left:auto">
         <a id="resumeDownload" class="button" href="resume.pdf" download>Download Resume</a>
-        <!-- contact button removed per request -->
       </div>
     </header>
 
@@ -201,7 +232,7 @@
             <li>Define and review test cases; support unit testing and co-ordinate/validate UAT with business users.</li>
             <li>Create audit-ready documentation (SOPs, runbooks, compliance checklists) and maintain a living knowledge base.</li>
             <li>Translate support tickets into reproducible product issues and measurable backlog items; reduce developer churn through clear reproduction steps and impact analysis.</li>
-            <li>Design dashboards and analytics to measure adoption, defect trends and process KPIs</li>
+            <li>Design dashboards and analytics to measure adoption, defect trends and process KPIs.</li>
           </ul>
         </section>
 
@@ -209,7 +240,7 @@
         <section class="card">
           <h2>Accomplishments & Impact</h2>
           <ul class="clean">
-            <li>Converted high-volume support patterns into product features, reducing  developer dependency by 90%.</li>
+            <li>Converted high-volume support patterns into product features, reducing developer dependency by 90%.</li>
             <li>Built BRDs and acceptance criteria for 20+ features; average delivery velocity improved by 18% after process changes.</li>
             <li>Designed onboarding & diagnostic playbooks used by support and product teams, improving first-contact resolution metrics.</li>
             <li>Led cross-functional UAT for multi-release rollouts; ensured zero showstopping defects in production launches.</li>
@@ -265,45 +296,51 @@
 
         </section>
 
-        <!-- Portfolio / screenshots gallery -->
-        <section class="card">
-          <h2>What My Managers Say</h2>
-          <p class="small">Reliable and proactive | Creates clear, accurate documentation | Strong in analysis and validation | Delivers high-quality work consistently | Trusted for critical tasks | Excellent collaboration and ownership</p>
-          <div class="gallery" id="gallery" aria-live="polite"></div>
-        </section>
-
       </main>
 
-      <!-- RIGHT: metrics, quick facts, contact (compact) -->
-      <aside class="panel card">
+      <!-- RIGHT: metrics, managers/testimonials, quick facts, contact (compact) -->
+      <aside class="panel card" aria-label="side panel">
         <h2>Metrics & Impact</h2>
         <div class="chart-wrap">
           <canvas id="baChart" aria-label="Bar chart showing BA metrics"></canvas>
         </div>
-      </aside>
-        
-      <section class="card">
-  <h2>Beyond Work</h2>
 
-  <p>
-    <strong>Creative writing | storytelling | mythology reading</strong>
-  </p>
-        
-  <p>
-    Pursuits that enhance my clarity, structure, empathy and communication as a Business Analyst.
-  </p>
-      </section>
+        <!-- moved managers/testimonials here to remove gap -->
+        <section class="card" id="managersCard" style="padding:12px;">
+          <h3 style="margin:0 0 8px 0;font-size:15px;">What My Managers Say</h3>
+          <p style="margin:0 0 8px 0;color:var(--muted);font-size:13px;">
+            Reliable and proactive | Creates clear, accurate documentation | Strong in analysis & validation | Trusted for critical tasks
+          </p>
 
-        <section class="card">
-        <h2 style="margin-top:16px">Quick facts</h2>
+          <div id="galleryAside" class="gallery" aria-live="polite"></div>
+        </section>
+
+        <h2 style="margin-top:8px">Quick facts</h2>
         <ul class="small clean" style="margin-top:8px">
           <li>Amazon awards: Customer Obsession & Flash Award.</li>
           <li>Citrix R&D: Leadership board (3rd overall).</li>
           <li>Expert at turning support signals into product outcomes; audit-ready documentation experience (CMMI / ISO).</li>
         </ul>
-        </section>
-      
-    </div> 
+
+        <h2 style="margin-top:16px">Contact</h2>
+        <p class="small">Email: <a href="mailto:sowmyasrirathnakumar@gmail.com">sowmyasrirathnakumar@gmail.com</a></p>
+        <p class="small">Phone: +91 97515 54451</p>
+      </aside>
+    </div>
+
+    <!-- Beyond Work - placed after grid -->
+    <section class="card">
+      <h2>Beyond Work</h2>
+      <h3 class="subheading">Creative writing | storytelling | mythology reading</h3>
+      <p style="margin-top:8px;font-size:15px;line-height:1.5">
+        Pursuits that enhance my clarity, structure, empathy, and communication as a Business Analyst.
+      </p>
+    </section>
+
+    <!-- Quick facts (kept / duplicated moved into aside already) -->
+    <footer id="contact">
+      <p class="small" style="margin-top:18px">Ready to discuss how I can help improve your product & customer experience?</p>
+    </footer>
   </div>
 
   <!-- Lightbox -->
@@ -315,13 +352,10 @@
   <script>
     /* small SVG placeholder (data URI) */
     const svgPlaceholder = 'data:image/svg+xml;utf8,' + encodeURIComponent(
-      `<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'>
-         <rect width='100%' height='100%' fill='#f3f7ff'/>
-         <text x='300' y='210' font-size='18' fill='#7e9cf7' text-anchor='middle' font-family='Arial, sans-serif'>Image not available</text>
-       </svg>`
+      `<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='100%' height='100%' fill='#f3f7ff'/><text x='300' y='210' font-size='18' fill='#7e9cf7' text-anchor='middle' font-family='Arial, sans-serif'>Image not available</text></svg>`
     );
 
-    /* PROFILE IMAGE: try likely paths (Images/ and images/) and common extensions */
+    /* PROFILE IMAGE detection */
     function testImagePaths(candidates, callback){
       let i = 0;
       function next(){
@@ -330,39 +364,31 @@
         const img = new Image();
         img.onload = () => callback(url);
         img.onerror = () => next();
-      img.src = url;
+        img.src = url;
       }
       next();
     }
-
-    const profileCandidates = [
-      'Images/profile.jpg','images/profile.jpg',
-      'Images/profile.png','images/profile.png',
-      'Images/profile.jpeg','images/profile.webp'
-    ];
+    const profileCandidates = ['Images/profile.jpg','images/profile.jpg','Images/profile.png','images/profile.png','Images/profile.webp'];
     testImagePaths(profileCandidates, function(found){
       const el = document.getElementById('profileImg');
       if(found){ el.src = found; el.alt = 'Sowmya Sri profile'; }
       else { el.src = svgPlaceholder; el.alt = 'Profile placeholder'; }
     });
 
-    /* GALLERY: load comment1..comment10 - show placeholder when missing - use object-fit:contain so images not cropped */
-    const galleryEl = document.getElementById('gallery');
+    /* GALLERY: render into aside gallery (#galleryAside) */
     const galleryNames = ['comment1','comment2','comment3','comment4','comment5','comment6','comment7','comment8','comment9','comment10'];
-    galleryNames.forEach(name => {
-      testImagePaths([
-        `Images/${name}.jpg`,`images/${name}.jpg`,
-        `Images/${name}.png`,`images/${name}.png`,
-        `Images/${name}.jpeg`,`images/${name}.webp`
-      ], function(found){
-        const div = document.createElement('div'); div.className = 'thumb'; div.tabIndex = 0;
-        const img = document.createElement('img');
+    const galleryAside = document.getElementById('galleryAside');
+    galleryNames.forEach(name=>{
+      testImagePaths([`Images/${name}.jpg`,`images/${name}.jpg`,`Images/${name}.png`,`images/${name}.png`,`Images/${name}.webp`], function(found){
+        const div=document.createElement('div'); div.className='thumb'; div.tabIndex=0;
+        const img=document.createElement('img');
         img.src = found || svgPlaceholder;
         img.alt = found ? name : 'Placeholder';
-        img.loading = 'lazy';
-        img.onerror = () => { if(img.src !== svgPlaceholder) img.src = svgPlaceholder; };
-        img.onclick = () => openLightbox(img.src, img.alt);
-        div.appendChild(img); galleryEl.appendChild(div);
+        img.loading='lazy';
+        img.onerror = ()=>{ if(img.src!==svgPlaceholder) img.src=svgPlaceholder; };
+        img.onclick = ()=> openLightbox(img.src, img.alt);
+        div.appendChild(img);
+        if(galleryAside) galleryAside.appendChild(div);
       });
     });
 
@@ -419,27 +445,13 @@
     }
     document.addEventListener('keydown', closeLightbox);
 
-    /* Resume: direct link to PDF in repo root — filename used below must match exact uploaded file.
-       I set it to: "Sowmya Sri Rathnakumar.pdf" encoded for URL. If your file name is different, tell me exact name. */
-    (function setResumeLink(){
+    /* Resume: direct link to resume.pdf in repo root (user set file to resume.pdf) */
+    (function ensureResumeHref(){
       const btn = document.getElementById('resumeDownload');
-      // use the filename you uploaded (URL encoded)
-      const filename = 'Sowmya%20Sri%20Rathnakumar.pdf';
-      // set href (assumes file is at repo root)
-      btn.href = filename;
-      // If you prefer to auto-detect, I can add an auto-find routine — but direct filename is fastest and reliable.
+      if(!btn) return;
+      btn.href = 'resume.pdf';
+      btn.setAttribute('download','');
     })();
-
   </script>
 </body>
-</html>
-
-
-
-
-
-
-
-
-
-
+            </html>
